@@ -7,4 +7,4 @@
 - The core takeaway is - *We use Node.js to run JS outside the browser*
 - Node.js uses *V8*, JS engine built by Google, that runs JS in the browser
 ### Node js working
-![working of Node.js](./screen_shots/nodejs_working.png)
+![working of Node.js](./screen_shots/working_nodejs.png)
