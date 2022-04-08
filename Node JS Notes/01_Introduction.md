@@ -8,3 +8,9 @@
 - Node.js uses *V8*, JS engine built by Google, that runs JS in the browser
 ### Node js working
 ![working of Node.js](./screen_shots/working_nodejs.png)
+
+### JS on the Server
+![JS on the Server](./screen_shots/js_on_server.png)
+
+### Node.js Role
+![Node.js Role](screen_shots/nodejs_role.png)
