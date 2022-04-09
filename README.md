@@ -12,3 +12,5 @@ This repo have Notes & Projects for backend, created by me
 |   5   |    DataBases    |   ⏳    |
 |   6   | Authentications |   ⏳    |
 |   7   | Error Handling  |   ⏳    |
+|   8   |    REST API     |   ⏳    |
+|   9   |     GraphQL     |   ⏳    |
