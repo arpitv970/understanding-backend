@@ -5,7 +5,10 @@ This repo have Notes & Projects for backend, created by me
 
 |   #   |     Topics      | Status |
 | :---: | :-------------: | :----: |
-|   1   |     Node.js     |   ⏳    |
-|   2   |   Express.js    |   ⏳    |
-|   3   | Template Engine |   ⏳    |
-|   4   |    DataBases    |   ⏳    |
+|   1   |  JS Refresher   |   ⏳    |
+|   2   |     Node.js     |   ⏳    |
+|   3   |   Express.js    |   ⏳    |
+|   4   | Template Engine |   ⏳    |
+|   5   |    DataBases    |   ⏳    |
+|   6   | Authentications |   ⏳    |
+|   7   | Error Handling  |   ⏳    |
