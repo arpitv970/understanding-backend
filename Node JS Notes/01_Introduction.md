@@ -9,15 +9,15 @@
 
 ---
 
-### Node.js working
+### *Node.js* working
 ![working of Node.js](./screen_shots/working_nodejs.png)
 
 ---
 
-### JS working on the Server
+### *JS* working on the Server
 ![JS on the Server](./screen_shots/js_on_server.png)
 
 ---
 
-### Node.js Role
+### *Node.js* Role
 ![Node.js Role](screen_shots/nodejs_role.png)
