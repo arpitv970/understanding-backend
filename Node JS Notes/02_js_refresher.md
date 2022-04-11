@@ -4,11 +4,37 @@
 
 ---
 ## Variables in JS
+
+### Declaring variable with *var*
 ```js
 var name = 'Madara';    // String
 var age = 30;           // Integer
 var EMS = true;         // Boolean
 ```
+
+### Declaring variable with *let*
+```js
+let name = 'Madara';    // String
+let age = 30;           // Integer
+let EMS = true;         // Boolean
+```
+
+### Declaring variable with *const*
+```js
+const name = 'Madara';    // String
+const age = 30;           // Integer
+const EMS = true;         // Boolean
+```
+
+---
+|       #        |  var   |    let     |   const    |
+| :------------: | :----: | :--------: | :--------: |
+|     scope      | global | code-block | code-block |
+|    updation    |   ✔️    |     ✔️      |     ❌      |
+| re-declaration |   ✔️    |     ❌      |     ❌      |
+
+>For more info related to *var*, *let* and *const* click here 👇[![*var* vs *let* vs *const*](./screen_shots/js_variable_declaration.png)](https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/)
+---
 
 ## Functions in JS
 ```js
