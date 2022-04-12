@@ -52,3 +52,22 @@ function summerizeShinobi(shinobiName, shinobiAge, KekkeiGenkai) {
 
 console.log(summerizeShinobi(name, age, EMS)); // this way we can directly prints of function's return value(s)
 ```
+### Arrow functions
+They work similar to traditinal functions but have important differences.
+
+>Follow the documentations provided to know about *Arrow Function* in detail 👇[![Arrow Functions](./screen_shots/Arrow_fucntion.png)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+```js
+const summerizeShinobi = (shinobiName, shinobiAge, KekkeiGenkai) => {
+  // parameters inside brackets have local-scope only
+  return (
+    "The Shinobi is " +
+    shinobiName +
+    ", age is " +
+    shinobiAge +
+    " & possess Kekkei Genkai " +
+    KekkeiGenkai
+  );
+};
+
+console.log(summerizeShinobi(name, age, EMS)); // this way we can directly prints of function's return value(s)
+```
