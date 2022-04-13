@@ -1,18 +1,10 @@
-const person = {
-  // key: value    --> key-value pair syntaxing
-  name: "Kyojuro Rengoku",
-  age: 20,
-  // greet: () => {
-  //   console.log(`Hello, Flame Hashira: ${this.name}`);  // this would produce undfinded error as in arrow function `this` keyword refers to the Global Scope
-  // },
+const arr = ['Yoriichi', 106, {name: 'Sakura', trash: true}];
 
-  // greet: function() {
-  //   console.log(`Hello, Flame Hashira: ${this.name}`);  // this could solve the previous problem
-  // },
+// iterating through an array
+// for (let element of arr) {
+//   console.log(element);
+// }
 
-  greet() {
-    console.log(`Hello, Flame Hashira: ${this.name}`);  // this could solve the previous problem
-  },
-};
-
-person.greet();
+// meathods 
+console.log(arr.map(element => `element: ${element}`));
+console.log(arr);
