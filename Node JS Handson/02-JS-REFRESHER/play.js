@@ -1,17 +1,18 @@
-var name = "Madara Uchiha"; // String
-var age = 30; // Integer
-var EMS = true; // Boolean
+const person = {
+  // key: value    --> key-value pair syntaxing
+  name: "Kyojuro Rengoku",
+  age: 20,
+  // greet: () => {
+  //   console.log(`Hello, Flame Hashira: ${this.name}`);  // this would produce undfinded error as in arrow function `this` keyword refers to the Global Scope
+  // },
 
-const summerizeShinobi = (shinobiName, shinobiAge, KekkeiGenkai) => {
-  // parameters inside brackets have local-scope only
-  return (
-    "The Shinobi is " +
-    shinobiName +
-    ", age is " +
-    shinobiAge +
-    " & possess Kekkei Genkai " +
-    KekkeiGenkai
-  );
+  // greet: function() {
+  //   console.log(`Hello, Flame Hashira: ${this.name}`);  // this could solve the previous problem
+  // },
+
+  greet() {
+    console.log(`Hello, Flame Hashira: ${this.name}`);  // this could solve the previous problem
+  },
 };
 
-console.log(summerizeShinobi(name, age, EMS)); // this way we can directly prints of function's return value(s)
+person.greet();
