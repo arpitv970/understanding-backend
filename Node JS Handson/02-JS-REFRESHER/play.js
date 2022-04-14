@@ -6,5 +6,7 @@ const arr = ['Yoriichi', 106, {name: 'Sakura', trash: true}];
 // }
 
 // meathods 
-console.log(arr.map(element => `element: ${element}`));
+// console.log(arr.map(element => `element: ${element}`));
+// console.log(arr);
+arr.push({Chakra: 'Wind'});
 console.log(arr);
