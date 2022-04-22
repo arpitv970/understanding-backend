@@ -15,3 +15,6 @@ server.listen(3000);    // this would run Node.js scripts to listen at mentioned
 ```
 
 ## Node.js Program Lifecycle
+![lifecycle](../screen_shots/nodejs_work_cycle.png)
+
+>To know more about HTTP Header follow this 👇 [![HTTP Header](../screen_shots/http_header.png)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)
