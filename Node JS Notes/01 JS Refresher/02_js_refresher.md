@@ -1,6 +1,6 @@
 # JS Quick Refresher
 ## JS Summary
-![JS Summary](./screen_shots/js_summary.png)
+![JS Summary](../screen_shots/js_summary.png)
 
 ---
 ## Variables in JS
@@ -33,7 +33,7 @@ const EMS = true;         // Boolean
 |    updation    |   ✔️    |     ✔️      |     ❌      |
 | re-declaration |   ✔️    |     ❌      |     ❌      |
 
->For more info related to *var*, *let* and *const* click here 👇[![*var* vs *let* vs *const*](./screen_shots/js_variable_declaration.png)](https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/)
+>For more info related to *var*, *let* and *const* click here 👇[![*var* vs *let* vs *const*](../screen_shots/js_variable_declaration.png)](https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/)
 ---
 
 ## Functions in JS
@@ -55,7 +55,7 @@ console.log(summerizeShinobi(name, age, EMS)); // this way we can directly print
 ### Arrow functions
 They work similar to traditinal functions but have important differences.
 
->Follow the documentations provided to know about *Arrow Function* in detail 👇[![Arrow Functions](./screen_shots/Arrow_fucntion.png)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+>Follow the documentations provided to know about *Arrow Function* in detail 👇[![Arrow Functions](../screen_shots/Arrow_fucntion.png)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 ```js
 const summerizeShinobi = (shinobiName, shinobiAge, KekkeiGenkai) => {
   // parameters inside brackets have local-scope only

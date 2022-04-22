@@ -15,4 +15,4 @@ Timeout!!
 - And that's why in example above, "Hello" is executed first (sync) after that "Timeout!!" (async)
 
 >Go through the docs on Promise to understand it in better way 👇
-[![Promise](./screen_shots/promise.png)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+[![Promise](../screen_shots/promise.png)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)

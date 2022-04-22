@@ -12,7 +12,7 @@ for (let element of arr) {
 // meathods 
 console.log(arr.map(element => `element: ${element}`));
 ```
->For more methods & detailing on Array read this 👇 [![methods in array](./screen_shots/array.png)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+>For more methods & detailing on Array read this 👇 [![methods in array](../screen_shots/array.png)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
 - We can still edit `arr` array without violating the restriction for `const` to not to change! Here is the some example:
   - using `push()` method to edit `arr` array
