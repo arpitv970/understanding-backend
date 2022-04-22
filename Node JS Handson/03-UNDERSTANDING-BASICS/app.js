@@ -14,7 +14,17 @@ const server = http.createServer((req, res) => {
 
     // In the following if ladder we want the url set back to '/' & to create a new file to store the user's message
     if (url === '/message' && method === 'POST') {
-        fs.writeFileSync('message.txt', 'Test Text');
+        const body = [];    // body will store 'chunks'
+        req.on('data', (chunk) => {
+            console.log(chunk);
+            body.push(chunk);   // this would push 'chunks' into the 'body'
+        });
+        req.on('end', () => {
+            const parsedBody = Buffer.concat(body).toString();  // now joining 'body' to the buffer as string
+            console.log(parsedBody);
+            const joining = parsedBody.split('=')[1];
+            fs.writeFileSync('message.txt', joining);   // this should run with 'req' as JS do not block the code
+        });
         res.statusCode = 302; // status code for re-direction
         res.setHeader('Location', '/');
         return res.end();
