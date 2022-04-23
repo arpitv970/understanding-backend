@@ -19,14 +19,15 @@ const server = http.createServer((req, res) => {
             console.log(chunk);
             body.push(chunk);   // this would push 'chunks' into the 'body'
         });
-        req.on('end', () => {
+        return req.on('end', () => {
             const parsedBody = Buffer.concat(body).toString();  // now joining 'body' to the buffer as string
             console.log(parsedBody);
             const joining = parsedBody.split('=')[1];
-            fs.writeFileSync('message.txt', joining);   // this should run with 'req' as JS do not block the code
-            res.statusCode = 302; // status code for re-direction
-            res.setHeader('Location', '/');
-            return res.end();
+            fs.writeFile('message.txt', joining, (err) => {
+                res.statusCode = 302; // status code for re-direction
+                res.setHeader('Location', '/');
+                return res.end();
+            });   // this should run with 'req' as JS do not block the code
         });
     }
 
