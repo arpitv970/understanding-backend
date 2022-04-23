@@ -1,6 +1,6 @@
 # Understanding Event driven Code Execution
 
-- The order of execution of code is not necessarily the order of the code written, for example the `fs.writeFileSync('message.txt', joining);` would execute after the *response code* (code below) it
+- The order of execution of code is not necessarily the order of the code written, for example the `fs.writeFileSync('message.txt', joining);` would execute after the *response code* (code below it).
 - Thus here are two implications:
   - Send a *response* does not mean that event listener are dead
   - If we do something in the event listener, that should influence the response
@@ -14,7 +14,7 @@
             console.log(chunk);
             body.push(chunk);
         });
-        req.on('end', () => {
+        return req.on('end', () => {
             const parsedBody = Buffer.concat(body).toString();
             console.log(parsedBody);
             const joining = parsedBody.split('=')[1];
@@ -35,7 +35,7 @@ Correct way to set-up
             console.log(chunk);
             body.push(chunk);
         });
-        req.on('end', () => {
+        return req.on('end', () => {
             const parsedBody = Buffer.concat(body).toString();
             console.log(parsedBody);
             const joining = parsedBody.split('=')[1];
@@ -47,5 +47,5 @@ Correct way to set-up
     }
 ...
 ```
-- It also important to understand that, if the `req.on()` or code like `http.createServer()` these are some ex whwerw nodejs uses a pattern where you pass a func to a func and node will execute these passed-in func at later point of time, which is called *Asynchronously*.
-- So when nodejs hits the event listener, it will add new event listener internally, manages all the event listener internally.
+- It also important to understand that, if the `req.on()` or code like `http.createServer()` these are some example where *Node.js* uses a pattern where you pass a function to a function and node will execute these passed-in function at later point of time, which is called *Asynchronously*.
+- So when *Node.js* hits the event listener, it will add new event listener internally, manages all the event listener internally.
