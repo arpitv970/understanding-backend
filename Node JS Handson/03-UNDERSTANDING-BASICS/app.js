@@ -24,10 +24,10 @@ const server = http.createServer((req, res) => {
             console.log(parsedBody);
             const joining = parsedBody.split('=')[1];
             fs.writeFileSync('message.txt', joining);   // this should run with 'req' as JS do not block the code
+            res.statusCode = 302; // status code for re-direction
+            res.setHeader('Location', '/');
+            return res.end();
         });
-        res.statusCode = 302; // status code for re-direction
-        res.setHeader('Location', '/');
-        return res.end();
     }
 
     res.setHeader('Content-Type', 'text/html');
