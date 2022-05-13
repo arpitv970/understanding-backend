@@ -1,5 +1,5 @@
 # Serving Files statically
-- Serving a file statically simply means: not to handle that file by any routes/middleware, instead directly forworded to the file system
+- Serving a file statically simply means: not to handle that file by any routes/middleware, instead directly forwarded to the file system
 - Thus we uses `express.static()` method to serve the file statically & now we just need to pass the path of that file
 
 And that's how our `app.js` looks like
