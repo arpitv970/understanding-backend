@@ -2,7 +2,7 @@
 
 - The order of execution of code is not necessarily the order of the code written, for example the `fs.writeFileSync('message.txt', joining);` would execute after the *response code* (code below it).
 - Thus here are two implications:
-  - After sending a *response* does not mean that event listener are dead
+  - After sending a *response* does not mean that event listeners are dead
   - If we do something in the event listener, that would also influence the *response*
 
 - Therefore, code below is the wrong way of setting it up, we should then also move the response code into the event listener
