@@ -7,7 +7,7 @@ This repo have Notes & Projects for backend, created by me
 | :---: | :-------------: | :----: |
 |   1   |  JS Refresher   |   ✅    |
 |   2   | Node.js Basics  |   ✅    |
-|   3   |   Express.js    |   ⏳    |
+|   3   |   Express.js    |   ✅    |
 |   4   | Template Engine |   ⏳    |
 |   5   |    DataBases    |   ⏳    |
 |   6   | Authentications |   ⏳    |
