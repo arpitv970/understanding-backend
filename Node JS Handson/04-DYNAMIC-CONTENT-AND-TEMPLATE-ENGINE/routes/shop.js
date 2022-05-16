@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get('/', (req, res, next) => {
     console.log('shop.js:', adminData.products);
-    res.sendFile(path.join(rootDir, 'views', 'shop.html'));   // this would yeild an address that would be compatible for both linux and windows OS
+    res.render('shop');
 });
 
 module.exports = router;

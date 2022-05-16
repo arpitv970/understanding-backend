@@ -6,3 +6,15 @@
 
 # Working of Template Engine
 ![Template Engine](../screen_shots/Template_Engine.png)
+
+# Insatlling some Template Engine
+Here we would go through the 3 major template engines:
+- EJS
+- Pug
+- Handlebars
+
+Use the following to install all 3 at same time
+
+```
+npm install --save ejs pug express-handlebars
+```
