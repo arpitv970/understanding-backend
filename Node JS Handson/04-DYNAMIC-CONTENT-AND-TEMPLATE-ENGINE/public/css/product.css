@@ -10,7 +10,7 @@ main {
 .main-header {
   width: 100%;
   height: 3.5rem;
-  background-color: #d71d42;
+  background-color: #1d2dd7;
   padding: 0 2rem;
 }
 
@@ -59,22 +59,22 @@ main {
 }
 
 .form-control input {
-  border: 1px solid #d71d42;
+  border: 1px solid #1d2dd7;
   font: inherit;
   border-radius: 0.3rem;
 }
 
 button {
   font: inherit;
-  border: 1px solid #d71d42;
-  color: #d71d42;
+  border: 1px solid #1d2dd7;
+  color: #1d2dd7;
   background-color: white;
   border-radius: 5rem;
   cursor: pointer;
   padding: 0.5rem 1rem;
 }
 button:hover {
-  background-color: #d71d42;
+  background-color: #1d2dd7;
   color: white;
   -webkit-transition: all 0.2s 0s ease-in-out;
   -moz-transition: all 0.2s 0s ease-in-out;
