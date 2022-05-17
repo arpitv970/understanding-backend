@@ -14,7 +14,7 @@ main {
 }
 .main-header {
   width: 100%;
-  height: 3.5rem;
+  height: max-content;
   background-color: #1d2dd7;
   padding: 0 2rem;
 }
@@ -56,13 +56,13 @@ main {
 
 .card {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  border-radius: 2.5rem;
-  margin: 1rem auto;
+  border-radius: 3rem;
+  margin: 2rem auto;
 }
 
 .card__header,
 .card__content {
-  padding: 1.5rem;
+  padding: 2rem;
 }
 
 .card__header h1,
@@ -73,15 +73,17 @@ main {
 }
 
 .card__image {
-  width: 100%;
+  width: 50%;
+  margin: auto;
+  padding: auto;
 }
 
 .card__image img {
-  width: 100%;
+  width: 90%;
 }
 
 .card__actions {
-  padding: 1rem;
+  padding: 0.5rem;
   text-align: center;
 }
 
@@ -95,16 +97,17 @@ main {
   border: 1px solid #1d39d7;
   color: #1d39d7;
   background-color: white;
-  border-radius: 5rem;
+  border-radius: 0.9rem;
   cursor: pointer;
-  padding: 0.5rem 1rem;
+  padding: 0.8rem 1rem;
 }
 .btn:hover,
 .btn:active {
+  border-radius: 5rem;
   background-color: #1d39d7;
   color: white;
-  -webkit-transition: all 0.2s 0s ease-in-out;
-  -moz-transition: all 0.2s 0s ease-in-out;
-  -o-transition: all 0.2s 0s ease-in-out;
-  transition: all 0.2s 0s ease-in-out;
+  -webkit-transition: all 0.35s 0s ease-in-out;
+  -moz-transition: all 0.35s 0s ease-in-out;
+  -o-transition: all 0.35s 0s ease-in-out;
+  transition: all 0.35s 0s ease-in-out;
 }

@@ -11,7 +11,7 @@
 .form-control input {
   border: 1px solid #1d2dd7;
   font: inherit;
-  border-radius: 0.3rem;
+  border-radius: 0.5rem;
 }
 
 .form-control input:focus {
