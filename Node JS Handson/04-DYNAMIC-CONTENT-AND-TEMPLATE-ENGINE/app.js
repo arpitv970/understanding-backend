@@ -5,7 +5,6 @@ const bodyParser = require("body-parser");
 
 const app = express(); // running express as function
 
-// app.set("view engine", "pug"); // this would set template engine to pug
 app.set("view engine", "ejs"); // this would set template engine to ejs
 app.set("views", "views"); // this can be omitted here, as it is useful when we uses name other than views
 
