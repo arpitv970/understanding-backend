@@ -58,11 +58,16 @@ main {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   border-radius: 3rem;
   margin: 2rem auto;
+  width: 30vw;
 }
 
 .card__header,
 .card__content {
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .card__header h1,
@@ -85,11 +90,17 @@ main {
 .card__actions {
   padding: 0.5rem;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0%;
+  /* border: 2px solid rgb(195, 9, 9); */
 }
 
 .card__actions button,
 .card__actions a {
   margin: 0 0.25rem;
+  margin-bottom: 0rem;
 }
 
 .btn {
@@ -105,6 +116,54 @@ main {
 .btn:active {
   border-radius: 5rem;
   background-color: #1d39d7;
+  color: white;
+  -webkit-transition: all 0.35s 0s ease-in-out;
+  -moz-transition: all 0.35s 0s ease-in-out;
+  -o-transition: all 0.35s 0s ease-in-out;
+  transition: all 0.35s 0s ease-in-out;
+}
+
+.edit {
+  font: inherit;
+  border: 1px solid #13b8d5;
+  color: #13b8d5;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 0.9rem;
+  cursor: pointer;
+  padding: 0.8rem 1rem;
+  width: 5rem;
+}
+.edit:link {
+  text-decoration: none;
+}
+.edit:hover,
+.edit:active {
+  border-radius: 5rem;
+  background-color: #13b8d5;
+  color: white;
+  -webkit-transition: all 0.35s 0s ease-in-out;
+  -moz-transition: all 0.35s 0s ease-in-out;
+  -o-transition: all 0.35s 0s ease-in-out;
+  transition: all 0.35s 0s ease-in-out;
+}
+
+.delete {
+  font: inherit;
+  border: 1px solid #d7291d;
+  color: #d7291d;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 0.9rem;
+  cursor: pointer;
+  padding: 0.8rem 1rem;
+  width: 5rem;
+}
+.delete:link {
+  text-decoration: none;
+}
+.delete:hover,
+.delete:active {
+  border-radius: 5rem;
+  background-color: #d7291d;
   color: white;
   -webkit-transition: all 0.35s 0s ease-in-out;
   -moz-transition: all 0.35s 0s ease-in-out;
