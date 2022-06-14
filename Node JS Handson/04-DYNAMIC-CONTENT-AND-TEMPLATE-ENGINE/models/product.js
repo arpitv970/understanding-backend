@@ -28,6 +28,7 @@ module.exports = class Product {
 
   // this is a meathod to store
   save() {
+    this.id = Math.random().toString();   // This Math.random is used to produce unique id for each product
     getProductsFromFile((products) => {
       products.push(this);
       fs.writeFile(p, JSON.stringify(products), (err) => {
