@@ -18,6 +18,8 @@ router.post("/add-product", adminController.postAddProduct);
 // /admin/edit-product/{some dynamic id} => POST
 router.get("/edit-product/:productId", adminController.getEditProduct);
 
+router.post("/edit-product", adminController.postEditProduct);
+
 // module.exports = router;
 
 module.exports = router;
