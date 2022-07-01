@@ -90,3 +90,7 @@ button:hover {
   -o-transition: all 0.2s 0s ease-in-out;
   transition: all 0.2s 0s ease-in-out;
 }
+
+.prod-img {
+  height: 22rem;
+}
