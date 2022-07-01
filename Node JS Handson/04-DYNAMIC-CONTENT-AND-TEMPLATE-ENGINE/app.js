@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 // importing required controller(s)
 const getController = require('./controllers/error');
-const db = require('./utils/database'); // this would be the pool of connections
+const sequelize = require('./utils/database'); // this would be the pool of connections
 
 const app = express(); // running express as function
 
@@ -26,4 +26,12 @@ app.use(shopRoutes);
 // utilizing the imported controller(s)
 app.use(getController.get404);
 
-app.listen(3000);
+sequelize
+    .sync()
+    .then((result) => {
+        // console.log(result);
+        app.listen(3000);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
