@@ -35,17 +35,22 @@ exports.getEditProduct = (req, res, next) => {
     }
 
     const prodId = req.params.productId;
-    Product.findById(prodId, (product) => {
-        if (!product) {
-            return res.redirect('/');
-        }
-        res.render('admin/edit-product', {
-            pageTitle: 'Edit Product',
-            path: '/admin/edit-product',
-            editing: editMode,
-            product: product,
+    // findById is deprecated since Sequelize 5 so replace if with findByPk
+    Product.findByPk(prodId)
+        .then((product) => {
+            if (!product) {
+                return res.redirect('/');
+            }
+            res.render('admin/edit-product', {
+                pageTitle: 'Edit Product',
+                path: '/admin/edit-product',
+                editing: editMode,
+                product: product,
+            });
+        })
+        .catch((err) => {
+            console.log(err);
         });
-    });
 };
 
 exports.postEditProduct = (req, res, next) => {
@@ -54,15 +59,23 @@ exports.postEditProduct = (req, res, next) => {
     const updatedPrice = req.body.price;
     const updatedImageUrl = req.body.imageUrl;
     const updatedDesc = req.body.description;
-    const updatedProduct = new Product(
-        prodId,
-        updatedTitle,
-        updatedImageUrl,
-        updatedDesc,
-        updatedPrice
-    );
-    updatedProduct.save();
-    res.redirect('/admin/products');
+
+    Product.findByPk(prodId)
+        .then((product) => {
+            product.title = updatedTitle;
+            product.price = updatedPrice;
+            product.description = updatedDesc;
+            product.imageUrl = updatedImageUrl;
+            return product.save();
+        })
+        .then((result) => {
+            console.log('Updated Product!!');
+            res.redirect('/admin/products');
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+
 };
 
 exports.getProducts = (req, res, next) => {
