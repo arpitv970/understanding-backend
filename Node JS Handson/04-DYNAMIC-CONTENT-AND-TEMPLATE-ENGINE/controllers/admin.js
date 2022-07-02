@@ -38,8 +38,11 @@ exports.getEditProduct = (req, res, next) => {
 
     const prodId = req.params.productId;
     // findById is deprecated since Sequelize 5 so replace if with findByPk
-    Product.findByPk(prodId)
-        .then((product) => {
+    req.user
+        .getProducts({ where: { id: prodId } })
+        // Product.findByPk(prodId)
+        .then((products) => {
+            const product = products[0];
             if (!product) {
                 return res.redirect('/');
             }
@@ -80,7 +83,8 @@ exports.postEditProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-    Product.findAll()
+    req.user
+        .getProducts()
         .then((products) => {
             // console.log(products);
             res.render('admin/products', {
