@@ -23,9 +23,9 @@
                         <div class="card__actions">
 
                             <!-- '?edit=true' is a query params -->
-                            <a href="/admin/edit-product/<%= product.id %>?edit=true" class="btn edit">Edit</a>
+                            <a href="/admin/edit-product/<%= product._id %>?edit=true" class="btn edit">Edit</a>
                             <form action="/admin/delete-product" method="POST">
-                                <input type="hidden" value="<%= product.id %>" name="productId">
+                                <input type="hidden" value="<%= product._id %>" name="productId">
                               <button class="btn delete" type="submit">Delete</button>
                             </form>
                         </div>
