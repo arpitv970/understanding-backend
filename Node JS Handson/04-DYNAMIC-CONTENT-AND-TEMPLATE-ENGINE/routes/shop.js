@@ -14,11 +14,11 @@ router.get('/products', shopController.getProducts);
 // if you have dynamic path similar to exact path like "/products/delete" & "/products/:productID", always put dynamic one at the last
 router.get('/products/:productId', shopController.getProduct);
 
-// router.get('/cart', shopController.getCart);
+router.get('/cart', shopController.getCart);
 
 router.post('/cart', shopController.postCart);
 
-// router.post('/cart-delete-item', shopController.postCartDeleteProduct);
+router.post('/cart-delete-item', shopController.postCartDeleteProduct);
 
 // router.post('/create-order', shopController.postOrder);
 
