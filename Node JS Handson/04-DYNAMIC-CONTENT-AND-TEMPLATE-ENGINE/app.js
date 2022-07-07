@@ -49,7 +49,7 @@ mongoose
                     name: 'Arpit',
                     email: 'arpitv970@gmail.com',
                     cart: {
-                        items: [],
+                        items: [{}],
                     },
                 });
                 user.save();
