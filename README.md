@@ -11,9 +11,10 @@ This repo have Notes & Projects for backend, created by me
 |   4   |  Template Engine   |   ✅    |
 |   5   |        MVC         |   ✅    |
 |   6   |  SQL + Sequelize   |   ✅    |
-|   6   |       NoSQL        |   ⏳    |
-|   6   | Mongoose + MongoDB |   ⏳    |
-|   7   |  Authentications   |   ⏳    |
-|   8   |   Error Handling   |   ⏳    |
-|   9   |      REST API      |   ⏳    |
-|  10   |      GraphQL       |   ⏳    |
+|   7   |  NoSQL (MongoDB)   |   ✅    |
+|   8   | Mongoose + MongoDB |   ✅    |
+|   9   | Sessions & Cookies |   ⏳    |
+|  10   |  Authentications   |   ⏳    |
+|  11   |   Error Handling   |   ⏳    |
+|  12   |      REST API      |   ⏳    |
+|  13   |      GraphQL       |   ⏳    |
