@@ -38,9 +38,9 @@ main {
     padding: 0;
 }
 
-.main-header__item a {
-    text-decoration: none;
+.main-header__item button {
     color: white;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .main-header__item a:hover,
