@@ -13,7 +13,7 @@ This repo have Notes & Projects for backend, created by me
 |   6   |  SQL + Sequelize   |   ✅    |
 |   7   |  NoSQL (MongoDB)   |   ✅    |
 |   8   | Mongoose + MongoDB |   ✅    |
-|   9   | Sessions & Cookies |   ⏳    |
+|   9   | Sessions & Cookies |   ✅    |
 |  10   |  Authentications   |   ⏳    |
 |  11   |   Error Handling   |   ⏳    |
 |  12   |      REST API      |   ⏳    |
