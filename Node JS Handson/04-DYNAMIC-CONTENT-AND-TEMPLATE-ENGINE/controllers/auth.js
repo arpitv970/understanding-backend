@@ -14,9 +14,9 @@ exports.getSignup = (req, res, next) => {
     res.render('auth/signup', {
         path: '/signup',
         pageTitle: 'Signup',
-        isAuth: false
-    })
-}
+        isAuth: false,
+    });
+};
 
 exports.postLogin = (req, res, next) => {
     User.findById('62c6ce9cc73fef6de8e93910')
@@ -33,7 +33,31 @@ exports.postLogin = (req, res, next) => {
         });
 };
 
-exports.postSignup = (req, res, next) => {}
+exports.postSignup = (req, res, next) => {
+    const email = req.body.email;
+    const password = req.body.password;
+    const confirmPassword = req.body.confirmPassword;
+
+    User.findOne({ email: email })
+        .then((userDoc) => {
+            if (userDoc) {
+                return res.redirect('/signup');
+            }
+
+            const user = new User({
+                email: email,
+                password: password,
+                cart: { items: [] },
+            });
+            return user.save();
+        })
+        .then((results) => {
+            res.redirect('/login');
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+};
 
 exports.postLogout = (req, res, next) => {
     req.session.destroy((err) => {
