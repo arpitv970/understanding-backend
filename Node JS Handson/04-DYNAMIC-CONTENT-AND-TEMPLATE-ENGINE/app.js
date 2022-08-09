@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
-const csrf = require('csurf');
 
 // importing required controller(s)
 const getController = require('./controllers/error');
@@ -19,8 +18,6 @@ const store = new MongoDBStore({
     uri: MONGODB_URI,
     collection: 'sessions',
 });
-
-const csrfProtect = csrf();
 
 app.set('view engine', 'ejs'); // this would set template engine to ejs
 app.set('views', 'views'); // this can be omitted here, as it is useful when we uses name other than views
@@ -40,10 +37,9 @@ app.use(
         store: store,
     })
 );
-app.use(csrfProtect);
 
 app.use((req, res, next) => {
-    if (!req.session.user) {
+    if(!req.session.user) {
         return next();
     }
     User.findById(req.session.user._id)
@@ -55,12 +51,6 @@ app.use((req, res, next) => {
             console.log(err);
         });
 });
-
-app.use((req, res, next) => {
-    res.locals.isAuth = req.session.isLoggedIn;
-    res.locals.csrfToken = req.csrfToken();
-    next();
-})
 
 // utilizing the imported route(s)
 app.use('/admin', adminRoutes); // '/admin' is used to filter url
