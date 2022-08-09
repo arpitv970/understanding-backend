@@ -241,6 +241,26 @@ main {
     transition: all 0.35s 0s ease-in-out;
 }
 
+.user-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem auto;
+    padding: 1.2rem;
+    width: 75%; 
+    color: white;
+    border: 1px solid #1d39d7;
+    border-radius: 1rem;
+    background-color: #1d39d7;
+    font-size: 1.2rem;
+}
+
+.user-message--error {
+    background-color: #d7291d46;
+    color: #d7291d;
+    border: 1px solid #d7291d;
+}
+
 @media (min-width: 768px) {
     .main-header__nav {
         display: flex;
