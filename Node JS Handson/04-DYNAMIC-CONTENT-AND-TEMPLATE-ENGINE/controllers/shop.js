@@ -61,7 +61,8 @@ exports.getCart = (req, res, next) => {
                 path: '/cart',
                 pageTitle: 'Your Cart',
                 products: products,
-                isAuth: req.session.isLoggedIn,
+                // isAuth: req.session.isLoggedIn,
+                // csrfToken: req.csrfToken()
             });
         })
         .catch((err) => {
