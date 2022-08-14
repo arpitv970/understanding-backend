@@ -113,3 +113,6 @@ exports.postLogin = (req, res, next) => {
         });
 };
 ```
+
+> To know more about `bcryptjs` follow the official documentations: 👇 
+> [![bcryptjs](../screen_shots/bcryptjs.png)](https://github.com/dcodeIO/bcrypt.js)
