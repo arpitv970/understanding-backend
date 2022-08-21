@@ -2,6 +2,18 @@ const bcrypt = require('bcryptjs');
 
 const User = require('../models/user');
 
+const nodemailer = require('nodemailer');
+const sendGrid = require('nodemailer-sendgrid-transport');
+
+const transporter = nodemailer.createTransport(
+    sendGrid({
+        auth: {
+            api_key:
+                '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',
+        },
+    })
+);
+
 exports.getLogin = (req, res, next) => {
     let message = req.flash('error');
     if (message.length > 0) {
@@ -88,6 +100,15 @@ exports.postSignup = (req, res, next) => {
                 })
                 .then((results) => {
                     res.redirect('/login');
+                    return transporter.sendMail({
+                        to: email,
+                        from: 'arpitv970@gmail.com',
+                        subject: 'Signup Sucessfully completed',
+                        html: '<h1>Welcome to the Cold Spine Ecommerce!</h1>',
+                    });
+                })
+                .catch((err) => {
+                    console.log(err);
                 });
         })
 
