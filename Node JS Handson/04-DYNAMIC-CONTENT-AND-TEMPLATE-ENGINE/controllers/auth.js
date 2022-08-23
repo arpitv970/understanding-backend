@@ -3,16 +3,20 @@ require('dotenv').config();
 
 const User = require('../models/user');
 
-const nodemailer = require('nodemailer');
+// const nodemailer = require('nodemailer');
+
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+
 const sendGrid = require('nodemailer-sendgrid-transport');
 
-const transporter = nodemailer.createTransport(
-    sendGrid({
-        auth: {
-            api_key: process.env.API_KEY,
-        },
-    })
-);
+// const transporter = nodemailer.createTransport(
+//     sendGrid({
+//         auth: {
+//             api_key: process.env.SENDGRID_API_KEY,
+//         },
+//     })
+// );
 
 exports.getLogin = (req, res, next) => {
     let message = req.flash('error');
@@ -100,15 +104,15 @@ exports.postSignup = (req, res, next) => {
                 })
                 .then((results) => {
                     res.redirect('/login');
-                    return transporter.sendMail({
-                        to: email,
+                    return sgMail.send({
                         from: 'arpitv970@gmail.com',
+                        to: email,
                         subject: 'Signup Sucessfully completed',
                         html: '<h1>Welcome to the Cold Spine Ecommerce!</h1>',
                     });
                 })
                 .catch((err) => {
-                    console.log(err);
+                    console.log("Error");
                 });
         })
 
