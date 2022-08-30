@@ -1,9 +1,13 @@
+const crypto = require('crypto');
+
 const bcrypt = require('bcryptjs');
 require('dotenv').config();
 
 const User = require('../models/user');
 
 const sgMail = require('@sendgrid/mail');
+const user = require('../models/user');
+const { use } = require('../routes/auth');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.getLogin = (req, res, next) => {
@@ -134,4 +138,112 @@ exports.postLogout = (req, res, next) => {
         console.log(err);
         res.redirect('/');
     });
+};
+
+// resetting password
+exports.getResetPass = (req, res, next) => {
+    let message = req.flash('error');
+    if (message.length > 0) {
+        message = message[0];
+    } else {
+        message = null;
+    }
+    res.render('auth/reset', {
+        path: '/reset',
+        pageTitle: 'Reset Password',
+        errorMessage: message,
+    });
+};
+
+exports.postResetPass = (req, res, next) => {
+    crypto.randomBytes(32, (err, buffer) => {
+        if (err) {
+            console.log(err);
+            return res.redirect('/reset');
+        }
+
+        const token = buffer.toString();
+        User.findOne({ email: req.body.email })
+            .then((user) => {
+                if (!user) {
+                    req.flash('error', 'No such user exists');
+                    return res.redirect('/reset');
+                }
+                user.resetToken = token;
+                user.resetTokenExpire = Date.now() + 3600000;
+                return user.save();
+            })
+            .then((result) => {
+                res.redirect('/');
+                sgMail.send({
+                    to: req.body.email,
+                    from: {
+                        name: 'Arpit Verma',
+                        email: 'arpitv970@gmail.com',
+                    },
+                    subject: 'Password Reset',
+                    html: `
+                    <p>You have requested for password reset</p>
+                    <p>Click <a href='http://localhost:3000/reset/${token}'>here</a> to reset password</p>
+                    `,
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    });
+};
+
+exports.getNewPass = (req, res, next) => {
+    const token = req.params.token;
+
+    User.findOne({ resetToken: token, resetTokenExpire: { $gt: Date.now() } })
+        .then((user) => {
+            let message = req.flash('error');
+            if (message.length > 0) {
+                message = message[0];
+            } else {
+                message = null;
+            }
+            res.render('auth/new-pass', {
+                path: '/new-pass',
+                pageTitle: 'New Password',
+                errorMessage: message,
+                userId: user._id.toString(),
+                passToken: token,
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+};
+
+exports.postNewPass = (req, res, next) => {
+    const newPass = req.body.password;
+    const userId = req.body.userId;
+    const passToken = req.body.passToken;
+    let resetUser;
+
+    User.findOne({
+        resetToken: passToken,
+        resetTokenExpire: { $gt: Date.now() },
+        _id: userId,
+    })
+        .then(user => {
+            resetUser = user;
+            return bcrypt.hash(newPass, 12)
+        })
+        .then(hashedPass => {
+            resetUser.password = hashedPass;
+            resetUser.resetToken = undefined;
+            resetUser.resetTokenExpire = undefined;
+            return resetUser.save();
+        })
+        .then(result => {
+            res.redirect('/login');
+            
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
