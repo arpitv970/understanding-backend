@@ -15,8 +15,8 @@ This repo have Notes & Projects for backend, created by me
 |   8   |    Mongoose + MongoDB     |   ✅    |
 |   9   |    Sessions & Cookies     |   ✅    |
 |  10   |      Authentications      |   ✅    |
-|  11   |       Sending Email       |   ⏳    |
-|  12   | Advance Auth & Validation |   ⏳    |
+|  11   |       Sending Email       |   ✅    |
+|  12   | Advance Auth & Validation |   ✅    |
 |  13   |      Error Handling       |   ⏳    |
 |  14   |        Pagination         |   ⏳    |
 |  15   |      Async requests       |   ⏳    |
