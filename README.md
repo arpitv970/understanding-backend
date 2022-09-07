@@ -17,7 +17,7 @@ This repo have Notes & Projects for backend, created by me
 |  10   |      Authentications      |   ✅    |
 |  11   |       Sending Email       |   ✅    |
 |  12   | Advance Auth & Validation |   ✅    |
-|  13   |      Error Handling       |   ⏳    |
+|  13   |      Error Handling       |   ✅    |
 |  14   |        Pagination         |   ⏳    |
 |  15   |      Async requests       |   ⏳    |
 |  16   |      Adding Payments      |   ⏳    |

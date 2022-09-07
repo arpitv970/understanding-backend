@@ -41,7 +41,7 @@ app.use(
     })
 );
 app.use(csrfProtect);
-app.use(flash())
+app.use(flash());
 
 app.use((req, res, next) => {
     if (!req.session.user) {
@@ -49,11 +49,14 @@ app.use((req, res, next) => {
     }
     User.findById(req.session.user._id)
         .then((user) => {
+            if (!user) {
+                return next();
+            }
             req.user = user;
             next();
         })
         .catch((err) => {
-            console.log(err);
+            throw new Error(err);
         });
 });
 
@@ -75,7 +78,9 @@ mongoose
     .connect(MONGODB_URI)
     .then((result) => {
         app.listen(3000);
-	console.log('Listening server at Port: 3000\ncheckout: http://localhost:3000');
+        console.log(
+            'Listening server at Port: 3000\ncheckout: http://localhost:3000'
+        );
     })
     .catch((err) => {
         console.log(err);
