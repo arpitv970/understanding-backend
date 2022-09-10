@@ -30,7 +30,10 @@ const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const authRoutes = require('./routes/auth');
 
+// this would parse data into text format and would fail to load format like files
+// Also bodyParser  don't provide any of the meathod to handle files
 app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(
     session({
@@ -78,9 +81,7 @@ mongoose
     .connect(MONGODB_URI)
     .then((result) => {
         app.listen(3000);
-        console.log(
-            'Listening server at Port: 3000\ncheckout: http://localhost:3000'
-        );
+        console.log('Checkout: http://localhost:3000');
     })
     .catch((err) => {
         console.log(err);
