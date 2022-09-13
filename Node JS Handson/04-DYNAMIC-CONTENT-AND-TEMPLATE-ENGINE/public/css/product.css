@@ -73,6 +73,11 @@ main {
     outline-color: #001069;
 }
 
+.form-control input.invalid {
+  border-color: red;
+  outline-color: crimson;
+}
+
 button {
   font: inherit;
   border: 1px solid #1d2dd7;

@@ -9,6 +9,7 @@ const sgMail = require('@sendgrid/mail');
 const user = require('../models/user');
 const { use } = require('../routes/auth');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const { validationResult } = require('express-validator/check');
 
 exports.getLogin = (req, res, next) => {
     let message = req.flash('error');
@@ -35,12 +36,28 @@ exports.getSignup = (req, res, next) => {
         path: '/signup',
         pageTitle: 'Signup',
         errorMessage: message,
+        oldInput: {
+            email: '',
+            password: '',
+            confirmPassword: '',
+        },
+        validationErrors: [],
     });
 };
 
 exports.postLogin = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        console.log(errors.array());
+        return res.status(422).render('auth/login', {
+            path: '/login',
+            pageTitle: 'Login',
+            errorMessage: errors.array()[0].msg,
+        });
+    }
     User.findOne({ email: email })
         .then((user) => {
             if (!user) {
@@ -75,59 +92,47 @@ exports.postLogin = (req, res, next) => {
 exports.postSignup = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
-    const confirmPassword = req.body.confirmPassword;
+    const errors = validationResult(req);
 
-    User.findOne({ email: email })
-        .then((userDoc) => {
-            if (password === '') {
-                req.flash('error', 'Please set password for your account!');
-                return res.redirect('/signup');
-            }
+    if (!errors.isEmpty()) {
+        console.log(errors.array());
+        return res.status(422).render('auth/signup', {
+            path: '/signup',
+            pageTitle: 'Signup',
+            errorMessage: errors.array()[0].msg,
+            oldInput: {
+                email: email,
+                password: password,
+                confirmPassword: req.body.confirmPassword,
+            },
+            validationErrors: errors.array(),
+        });
+    }
 
-            if (confirmPassword === '') {
-                req.flash('error', 'Please confirm your password!');
-                return res.redirect('/signup');
-            }
-
-            if (userDoc) {
-                req.flash('error', 'Email already exists!');
-                return res.redirect('/signup');
-            }
-
-            if (password !== confirmPassword) {
-                req.flash('error', 'The passwords does not matches!');
-                return res.redirect('/signup');
-            }
-
-            return bcrypt
-                .hash(password, 12)
-                .then((hashedPass) => {
-                    const user = new User({
-                        email: email,
-                        password: hashedPass,
-                        cart: { items: [] },
-                    });
-                    return user.save();
-                })
-                .then((results) => {
-                    res.redirect('/login');
-                    return sgMail.send({
-                        to: email,
-                        // from: 'arpitv970@gmail.com',
-                        from: {
-                            name: 'Arpit Verma',
-                            email: 'arpitv970@gmail.com',
-                        },
-                        subject: 'Signup Sucessfully completed',
-                        text: 'Welcome to the Cold Spine Ecommerce!',
-                        html: '<h1>Welcome to the Cold Spine Ecommerce!</h1>',
-                    });
-                })
-                .catch((err) => {
-                    console.log('Error: ', err);
-                });
+    bcrypt
+        .hash(password, 12)
+        .then((hashedPass) => {
+            const user = new User({
+                email: email,
+                password: hashedPass,
+                cart: { items: [] },
+            });
+            return user.save();
         })
-
+        .then((results) => {
+            res.redirect('/login');
+            return sgMail.send({
+                to: email,
+                // from: 'arpitv970@gmail.com',
+                from: {
+                    name: 'Arpit Verma',
+                    email: 'arpitv970@gmail.com',
+                },
+                subject: 'Signup Sucessfully completed',
+                text: 'Welcome to the Cold Spine Ecommerce!',
+                html: '<h1>Welcome to the Cold Spine Ecommerce!</h1>',
+            });
+        })
         .catch((err) => {
             console.log(err);
         });
@@ -229,19 +234,18 @@ exports.postNewPass = (req, res, next) => {
         resetTokenExpire: { $gt: Date.now() },
         _id: userId,
     })
-        .then(user => {
+        .then((user) => {
             resetUser = user;
-            return bcrypt.hash(newPass, 12)
+            return bcrypt.hash(newPass, 12);
         })
-        .then(hashedPass => {
+        .then((hashedPass) => {
             resetUser.password = hashedPass;
             resetUser.resetToken = undefined;
             resetUser.resetTokenExpire = undefined;
             return resetUser.save();
         })
-        .then(result => {
+        .then((result) => {
             res.redirect('/login');
-            
         })
         .catch((err) => {
             console.log(err);
