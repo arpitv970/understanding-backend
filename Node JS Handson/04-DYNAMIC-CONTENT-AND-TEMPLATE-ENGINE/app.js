@@ -44,7 +44,7 @@ app.use(
     })
 );
 app.use(csrfProtect);
-app.use(flash());
+app.use(flash())
 
 app.use((req, res, next) => {
     if (!req.session.user) {
@@ -52,14 +52,11 @@ app.use((req, res, next) => {
     }
     User.findById(req.session.user._id)
         .then((user) => {
-            if (!user) {
-                return next();
-            }
             req.user = user;
             next();
         })
         .catch((err) => {
-            throw new Error(err);
+            console.log(err);
         });
 });
 

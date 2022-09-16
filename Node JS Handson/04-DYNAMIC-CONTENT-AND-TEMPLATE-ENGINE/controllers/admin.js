@@ -31,15 +31,7 @@ exports.postAddProduct = (req, res, next) => {
             res.redirect('/admin/products');
         })
         .catch((err) => {
-            return res.status(500).render(
-                'admin/edit-product',
-                {
-                    pageTitle: 'Add Product',
-                    path: '/admin/add-product',
-                    editing: false,
-                },
-                req.flash('error', 'Database failed to load')
-            );
+            console.log(err);
         });
 };
 
